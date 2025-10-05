@@ -77,7 +77,7 @@ By the end of this 30-day challenge, I aim to:
 If you’re also on a DSA journey, feel free to:  
 ⭐ **Star this repo**  
 🍴 **Fork it** and start your own challenge  
-💬 **Connect with me** on [LinkedIn](https://www.linkedin.com/in/Abdul-wahab113/) and [LeetCode](https://leetcode.com/u/mVUO2ANGI5/)
+💬 **Connect with me** on [LinkedIn](https://www.linkedin.com/in/abdul-wahab-ahmad-821744271/) and [LeetCode](https://leetcode.com/u/mVUO2ANGI5/)
 
 > 🗣 “Consistency beats intensity. One problem a day keeps the fear away!” 💪  
 
