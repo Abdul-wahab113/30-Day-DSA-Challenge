@@ -374,6 +374,24 @@ Node *merge(Node *first, Node *second)
     return third; // Return head of merged linked list
 }
 
+Node *concate(Node *&first, Node *&second)
+{
+    if (first == NULL)
+        return second;
+    if (second == NULL)
+        return first;
+
+    Node *temp = first;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    temp->next = second;
+
+    return first;
+}
+
 // main function
 int main()
 {
@@ -404,6 +422,7 @@ int main()
         cout << "\n14. Reverse the Linked List";
         cout << "\n15. Middle of the Linked List";
         cout << "\n16. Merge two sorted Linked Lists";
+        cout << "\n17. Concatenate two Linked Lists";
         cout << "\n0. Exit";
         cout << "\n\nEnter your choice: ";
         cin >> choice;
@@ -516,6 +535,44 @@ int main()
 
             cout << "\nMerged Sorted Linked List: ";
             display(first != NULL ? first : second);
+            break;
+        }
+
+        case 17:
+        {
+            cout << "\n--- Concatenate Linked Lists ---\n";
+            int n1, n2, val;
+
+            Node *first = NULL, *second = NULL;
+            Node *tail1 = NULL, *tail2 = NULL;
+
+            cout << "Enter number of elements in first list: ";
+            cin >> n1;
+            cout << "Enter " << n1 << " values for List 1: ";
+            for (int i = 0; i < n1; i++)
+            {
+                cin >> val;
+                insertAtEnd(first, tail1, val);
+            }
+
+            cout << "Enter number of elements in second list: ";
+            cin >> n2;
+            cout << "Enter " << n2 << " values for List 2: ";
+            for (int i = 0; i < n2; i++)
+            {
+                cin >> val;
+                insertAtEnd(second, tail2, val);
+            }
+
+            cout << "\nList 1: ";
+            display(first);
+            cout << "List 2: ";
+            display(second);
+
+            Node *concatenated = concate(first, second);
+
+            cout << "\nConcatenated Linked List: ";
+            display(concatenated);
             break;
         }
 
