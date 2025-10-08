@@ -323,6 +323,57 @@ void middleOfLL(Node *head)
     cout << "The middle node of the Linked List :" << followup->data << endl;
 }
 
+// Merge two Sorted LL
+Node *merge(Node *first, Node *second)
+{
+    if (first == NULL)
+        return second;
+    if (second == NULL)
+        return first;
+
+    Node *third = NULL, *last = NULL;
+
+    // Initialize first node of merged list
+    if (first->data < second->data)
+    {
+        third = last = first;
+        first = first->next;
+        last->next = NULL;
+    }
+    else
+    {
+        third = last = second;
+        second = second->next;
+        last->next = NULL;
+    }
+
+    // Merge remaining nodes
+    while (first != NULL && second != NULL)
+    {
+        if (first->data < second->data)
+        {
+            last->next = first;
+            last = first;
+            first = first->next;
+        }
+        else
+        {
+            last->next = second;
+            last = second;
+            second = second->next;
+        }
+        last->next = NULL;
+    }
+
+    // Attach any remaining nodes
+    if (first != NULL)
+        last->next = first;
+    else
+        last->next = second;
+
+    return third; // Return head of merged linked list
+}
+
 // main function
 int main()
 {
@@ -352,6 +403,7 @@ int main()
         cout << "\n13. Delete from End";
         cout << "\n14. Reverse the Linked List";
         cout << "\n15. Middle of the Linked List";
+        cout << "\n16. Merge two sorted Linked Lists";
         cout << "\n0. Exit";
         cout << "\n\nEnter your choice: ";
         cin >> choice;
@@ -429,6 +481,43 @@ int main()
         case 15:
             middleOfLL(head);
             break;
+
+        case 16:
+        {
+            cout << "\n--- Merge Two Sorted Linked Lists ---\n";
+
+            Node *first = NULL, *second = NULL;
+            int n1, n2, val;
+
+            cout << "Enter number of elements in first sorted list: ";
+            cin >> n1;
+            cout << "Enter " << n1 << " sorted values for List 1: ";
+            for (int i = 0; i < n1; i++)
+            {
+                cin >> val;
+                insertInSortedLL(first, val);
+            }
+
+            cout << "Enter number of elements in second sorted list: ";
+            cin >> n2;
+            cout << "Enter " << n2 << " sorted values for List 2: ";
+            for (int i = 0; i < n2; i++)
+            {
+                cin >> val;
+                insertInSortedLL(second, val);
+            }
+
+            cout << "\nList 1: ";
+            display(first);
+            cout << "List 2: ";
+            display(second);
+
+            merge(first, second);
+
+            cout << "\nMerged Sorted Linked List: ";
+            display(first != NULL ? first : second);
+            break;
+        }
 
         case 0:
             cout << "Exiting Program... Goodbye!" << endl;
